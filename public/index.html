@@ -10,7 +10,7 @@
 <title>БебиЛог 🍼</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:linear-gradient(180deg,#fff0f5 0%,#e6f3ff 100%);min-height:100vh;color:#333;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom);user-select:none}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:linear-gradient(180deg,#fff0f5 0%,#e6f3ff 100%);min-height:100vh;color:#333;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom);user-select:none}
 .container{max-width:500px;margin:0 auto;padding:16px}
 header{text-align:center;padding:12px 0 20px}
 h1{font-size:28px;color:#d63384;margin-bottom:4px}
@@ -18,7 +18,7 @@ h1{font-size:28px;color:#d63384;margin-bottom:4px}
 .stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}
 .stat-card{background:white;border-radius:16px;padding:14px;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
 .stat-card.alert{background:linear-gradient(135deg,#ff6b6b,#ff8787);color:white;animation:pulse 1.5s infinite}
-<span style="color: hsl(var(--primary)); font-weight: 500;">@keyframes</span> pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.02)}}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.02)}}
 .stat-label{font-size:11px;text-transform:uppercase;opacity:0.7;margin-bottom:4px}
 .stat-value{font-size:18px;font-weight:600}
 .buttons{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
@@ -69,290 +69,85 @@ h1{font-size:28px;color:#d63384;margin-bottom:4px}
 </head>
 <body>
 <div class="container">
-  <header>
-    <h1>🍼 БебиЛог</h1>
-    <div class="subtitle">синхронизировано для двоих родителей 🤝</div>
-  </header>
-
-  <div class="stats">
-    <div class="stat-card" id="sleepStat">
-      <div class="stat-label">😴 Последний сон</div>
-      <div class="stat-value" id="lastSleep">—</div>
-    </div>
-    <div class="stat-card" id="poopStat">
-      <div class="stat-label">💩 Последняя какашка</div>
-      <div class="stat-value" id="lastPoop">—</div>
-    </div>
-  </div>
-
-  <div class="buttons">
-    <button class="btn btn-feed" onclick="addEvent('feed')"><span class="emoji">🍼</span>Покормили</button>
-    <button class="btn btn-vitamin" onclick="addEvent('vitamin')"><span class="emoji">💧</span>Добавка</button>
-    <button class="btn btn-sleep" onclick="addEvent('sleep')"><span class="emoji">😴</span>Заснула</button>
-    <button class="btn btn-wake" onclick="addEvent('wake')"><span class="emoji">⏰</span>Проснулась</button>
-    <button class="btn btn-poop" onclick="addEvent('poop')"><span class="emoji">💩</span>Покакала</button>
-    <button class="btn btn-voice" id="voiceBtn" onclick="toggleVoice()"><span class="emoji">🎤</span><span id="voiceLabel">Голосовая заметка</span></button>
-  </div>
-
-  <div class="day-nav">
-    <button onclick="changeDay(-1)" id="prevDay">‹</button>
-    <div class="day-title" id="dayTitle">Сегодня</div>
-    <button onclick="changeDay(1)" id="nextDay" disabled>›</button>
-  </div>
-
-  <div class="feed">
-    <div class="feed-title">📋 Лента событий</div>
-    <div id="eventsList"></div>
-  </div>
-
-  <div class="export-import">
-    <button onclick="exportData()">📤 Экспорт</button>
-    <button onclick="document.getElementById('importFile').click()">📥 Импорт</button>
-  </div>
-  <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)">
+<header>
+<h1>🍼 БебиЛог</h1>
+<div class="subtitle">синхронизировано для двоих родителей 🤝</div>
+</header>
+<div class="stats">
+<div class="stat-card" id="sleepStat">
+<div class="stat-label">😴 Последний сон</div>
+<div class="stat-value" id="lastSleep">—</div>
 </div>
-
+<div class="stat-card" id="poopStat">
+<div class="stat-label">💩 Последняя какашка</div>
+<div class="stat-value" id="lastPoop">—</div>
+</div>
+</div>
+<div class="buttons">
+<button class="btn btn-feed" onclick="addEvent('feed')"><span class="emoji">🍼</span>Покормили</button>
+<button class="btn btn-vitamin" onclick="addEvent('vitamin')"><span class="emoji">💧</span>Добавка</button>
+<button class="btn btn-sleep" onclick="addEvent('sleep')"><span class="emoji">😴</span>Заснула</button>
+<button class="btn btn-wake" onclick="addEvent('wake')"><span class="emoji">⏰</span>Проснулась</button>
+<button class="btn btn-poop" onclick="addEvent('poop')"><span class="emoji">💩</span>Покакала</button>
+<button class="btn btn-voice" id="voiceBtn" onclick="toggleVoice()"><span class="emoji">🎤</span><span id="voiceLabel">Голосовая заметка</span></button>
+</div>
+<div class="day-nav">
+<button onclick="changeDay(-1)" id="prevDay">‹</button>
+<div class="day-title" id="dayTitle">Сегодня</div>
+<button onclick="changeDay(1)" id="nextDay" disabled>›</button>
+</div>
+<div class="feed">
+<div class="feed-title">📋 Лента событий</div>
+<div id="eventsList"></div>
+</div>
+<div class="export-import">
+<button onclick="exportData()">📤 Экспорт</button>
+<button onclick="document.getElementById('importFile').click()">📥 Импорт</button>
+</div>
+<input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)">
+</div>
 <div class="toast" id="toast"></div>
-
 <div class="modal" id="vitaminModal">
-  <div class="modal-content">
-    <h2>💧 Какая добавка?</h2>
-    <p>Что дали малышке?</p>
-    <input type="text" id="vitaminInput" placeholder="Витамин D, 1 капля" value="Витамин D">
-    <div class="modal-buttons">
-      <button class="btn-cancel" onclick="closeModal()">Отмена</button>
-      <button class="btn-ok" onclick="confirmVitamin()">Записать</button>
-    </div>
-  </div>
+<div class="modal-content">
+<h2>💧 Какая добавка?</h2>
+<p>Что дали малышке?</p>
+<input type="text" id="vitaminInput" placeholder="Витамин D, 1 капля" value="Витамин D">
+<div class="modal-buttons">
+<button class="btn-cancel" onclick="closeModal()">Отмена</button>
+<button class="btn-ok" onclick="confirmVitamin()">Записать</button>
 </div>
-
+</div>
+</div>
 <script src="https://cdn.socket.io/4.7.4/socket.io.min.js"></script>
 <script>
-const comments = {
-  feed: ['Опять пир горой 🍽️','Желудок заправлен, можно лететь 🚀','Голод побеждён','Бутылочка осушена в три глотка','Шеф-повар может быть свободен','Топливо принято ⛽'],
-  vitamin: ['Доктор прописал — мы исполнили 💊','Профилактика рахита активирована','Витаминка на борту','Здоровья +1 ❤️','Аптечка в действии'],
-  sleep: ['Храп detected 💤','Режим «энергосбережение» активирован','Малышка ушла в офлайн','Тишина… наконец-то 🤫','Полчаса свободы родителям!','Кораблик уплыл в страну снов 🚢'],
-  wake: ['Тревога! Тревога! 🚨','Будильник биологический сработал','Глазки открыты — родители в боевой готовности','Привет миру! 👋','Кто звал? Я здесь!'],
-  poop: ['🎉 ПОБЕДА! Кишечник работает!','Произведение искусства готово 🎨','Подгузник в боевом режиме','Биология не подвела 💪','Свершилось чудо!','Аплодисменты, господа! 👏','Минус один подгузник — плюс счастья']
-};
-
-const titles = {feed:'🍼 Покормили',vitamin:'💧 Добавка',sleep:'😴 Заснула',wake:'⏰ Проснулась',poop:'💩 Покакала',voice:'🎤 Голосовая заметка'};
-let events = [];
-let viewDate = new Date();
+var comments = {feed:["Опять пир горой","Желудок заправлен","Голод побежден","Бутылочка осушена","Шеф-повар свободен","Топливо принято"],vitamin:["Доктор прописал","Профилактика активна","Витаминка на борту","Здоровья +1","Аптечка в действии"],sleep:["Храп detected","Режим энергосбережения","Малышка ушла в офлайн","Тишина","Полчаса свободы","Кораблик уплыл"],wake:["Тревога","Будильник сработал","Глазки открыты","Привет миру","Кто звал"],poop:["ПОБЕДА","Произведение искусства","Подгузник в деле","Биология не подвела","Свершилось чудо","Аплодисменты","Минус один подгузник"]};
+var titles = {feed:"Покормили",vitamin:"Добавка",sleep:"Заснула",wake:"Проснулась",poop:"Покакала",voice:"Голосовая заметка"};
+var events = [];
+var viewDate = new Date();
 viewDate.setHours(0,0,0,0);
-let mediaRecorder = null, audioChunks = [], isRecording = false;
-
-const socket = io();
-
-socket.on('connect', () => { console.log('Подключено к серверу'); });
-socket.on('all_events', (data) => { events = data; render(); });
-socket.on('new_event', (ev) => { events.push(ev); render(); });
-socket.on('delete_event', (id) => { events = events.filter(e => e.id !== id); render(); });
-
-function rand(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
-
-function addEvent(type) {
-  if (type === 'vitamin') { openVitaminModal(); return; }
-  const ev = { type, time: new Date().toISOString(), comment: rand(comments[type]) };
-  socket.emit('add_event', ev);
-  if (type === 'poop') {
-    showToast('🎉 ПОЗДРАВЛЯЕМ! Произошло Великое Какание! 💩👑','poop',3500);
-    if (navigator.vibrate) navigator.vibrate([100,50,100,50,200]);
-  } else if (type === 'sleep') {
-    showToast('😴 ' + rand(comments.sleep), 'success');
-  } else if (type === 'wake') {
-    const lastSleep = [...events].reverse().find(e => e.type === 'sleep');
-    if (lastSleep) {
-      const dur = Math.round((Date.now() - new Date(lastSleep.time)) / 60000);
-      showToast(`⏰ Проснулась! Спала ${formatDur(dur)}! ${dur > 120 ? 'Эпично!' : 'Бодрячком!'}`, 'success');
-    } else showToast('⏰ Проснулась!', 'success');
-  } else {
-    showToast(titles[type] + ' ✓', 'success');
-  }
-}
-
-function openVitaminModal() { document.getElementById('vitaminModal').classList.add('show'); }
-function closeModal() { document.getElementById('vitaminModal').classList.remove('show'); }
-function confirmVitamin() {
-  const v = document.getElementById('vitaminInput').value.trim() || 'Витамин D';
-  const ev = { type: 'vitamin', time: new Date().toISOString(), comment: rand(comments.vitamin), detail: v };
-  socket.emit('add_event', ev);
-  closeModal();
-  showToast('💧 ' + v + ' — записано', 'success');
-}
-
-function deleteEvent(id) {
-  if (!confirm('Удалить запись?')) return;
-  socket.emit('delete_event', id);
-}
-
-function formatDur(min) {
-  if (min < 1) return 'только что';
-  if (min < 60) return min + ' мин';
-  const h = Math.floor(min / 60), m = min % 60;
-  return m ? `~${h}ч ${m}мин` : `~${h}ч`;
-}
-
-function formatTime(iso) {
-  const d = new Date(iso);
-  return d.toTimeString().slice(0, 5);
-}
-
-function isSameDay(a, b) {
-  return a.toDateString() === b.toDateString();
-}
-
-function changeDay(delta) {
-  const today = new Date();
-  today.setHours(0,0,0,0);
-  const newDate = new Date(viewDate);
-  newDate.setDate(newDate.getDate() + delta);
-  if (newDate > today) return;
-  viewDate = newDate;
-  render();
-}
-
-function render() {
-  const today = new Date();
-  today.setHours(0,0,0);
-
-  const dt = document.getElementById('dayTitle');
-  if (isSameDay(viewDate, today)) {
-    dt.textContent = 'Сегодня · ' + viewDate.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long' });
-  } else {
-    dt.textContent = viewDate.toLocaleDateString('ru-RU', { weekday: 'short', day: 'numeric', month: 'long' });
-  }
-  document.getElementById('nextDay').disabled = isSameDay(viewDate, today);
-
-  // Статистика
-  const sleeps = events.filter(e => e.type === 'sleep');
-  const wakes = events.filter(e => e.type === 'wake');
-  const sleepEl = document.getElementById('lastSleep');
-  if (sleeps.length) {
-    const lastSleep = sleeps[sleeps.length - 1];
-    const wakeAfter = wakes.find(w => new Date(w.time) > new Date(lastSleep.time));
-    if (wakeAfter) {
-      sleepEl.textContent = formatDur(Math.round((new Date(wakeAfter.time) - new Date(lastSleep.time)) / 60000));
-    } else {
-      const m = Math.round((Date.now() - new Date(lastSleep.time)) / 60000);
-      sleepEl.textContent = 'спит ' + formatDur(m) + ' 💤';
-    }
-  } else { sleepEl.textContent = '—'; }
-
-  const poops = events.filter(e => e.type === 'poop');
-  const poopCard = document.getElementById('poopStat');
-  const poopEl = document.getElementById('lastPoop');
-  if (poops.length) {
-    const last = poops[poops.length - 1];
-    const hours = (Date.now() - new Date(last.time)) / 3600000;
-    poopEl.textContent = hours < 1 ? Math.round(hours * 60) + ' мин назад' : Math.round(hours) + ' ч назад';
-    if (hours > 24) {
-      poopCard.classList.add('alert');
-      poopEl.textContent = '🚨 ' + Math.round(hours) + 'ч! Кишечный заговор!';
-    } else { poopCard.classList.remove('alert'); }
-  } else {
-    poopEl.textContent = 'пока никогда 🤔';
-    poopCard.classList.remove('alert');
-  }
-
-  // Лента
-  const dayEvents = events
-    .filter(e => isSameDay(new Date(e.time), viewDate))
-    .sort((a, b) => new Date(b.time) - new Date(a.time));
-
-  const list = document.getElementById('eventsList');
-  if (!dayEvents.length) {
-    list.innerHTML = '<div class="empty">Пока тихо. Малышка партизанит 🤫</div>';
-    return;
-  }
-  list.innerHTML = dayEvents.map(e => {
-    const emoji = (titles[e.type] || '❓').split(' ')[0];
-    const title = (titles[e.type] || e.type).replace(emoji + ' ', '');
-    return `<div class="event">
-      <div class="event-emoji">${emoji}</div>
-      <div class="event-info">
-        <div class="event-title">${title}${e.detail ? ' · ' + e.detail : ''}</div>
-        <div class="event-comment">${e.comment || ''}</div>
-        ${e.audio ? `<audio controls src="${e.audio}" style="width:100%;margin-top:6px;height:32px"></audio>` : ''}
-        ${e.transcript ? `<div class="voice-note">📝 ${e.transcript}</div>` : ''}
-      </div>
-      <div class="event-time">${formatTime(e.time)}</div>
-      <button class="event-delete" onclick="deleteEvent(${e.id})">×</button>
-    </div>`;
-  }).join('');
-}
-
-function showToast(msg, type = '', dur = 2000) {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.className = 'toast ' + type + ' show';
-  setTimeout(() => t.classList.remove('show'), dur);
-}
-
-async function toggleVoice() {
-  if (!isRecording) {
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      mediaRecorder = new MediaRecorder(stream);
-      audioChunks = [];
-      mediaRecorder.ondataavailable = e => audioChunks.push(e.data);
-      mediaRecorder.onstop = () => {
-        const blob = new Blob(audioChunks, { type: 'audio/webm' });
-        const reader = new FileReader();
-        reader.onloadend = () => {
-          socket.emit('add_event', {
-            type: 'voice',
-            time: new Date().toISOString(),
-            comment: 'Голосовое сообщение от родителей',
-            audio: reader.result
-          });
-          showToast('🎤 Голосовая заметка сохранена', 'success');
-        };
-        reader.readAsDataURL(blob);
-        stream.getTracks().forEach(t => t.stop());
-      };
-      mediaRecorder.start();
-      isRecording = true;
-      document.getElementById('voiceBtn').classList.add('recording');
-      document.getElementById('voiceLabel').textContent = '⏹ Остановить запись';
-    } catch (err) { alert('Не удалось получить доступ к микрофону: ' + err.message); }
-  } else {
-    mediaRecorder.stop();
-    isRecording = false;
-    document.getElementById('voiceBtn').classList.remove('recording');
-    document.getElementById('voiceLabel').textContent = 'Голосовая заметка';
-  }
-}
-
-function exportData() {
-  const data = JSON.stringify(events, null, 2);
-  const blob = new Blob([data], { type: 'application/json' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = 'babylog-' + new Date().toISOString().slice(0, 10) + '.json';
-  a.click();
-  URL.revokeObjectURL(url);
-}
-
-function importData(e) {
-  const file = e.target.files[0];
-  if (!file) return;
-  const reader = new FileReader();
-  reader.onload = ev => {
-    try {
-      const data = JSON.parse(ev.target.result);
-      if (!Array.isArray(data)) throw new Error('Неправильный формат');
-      if (confirm('Заменить все данные импортированными?')) {
-        socket.emit('import_all', data);
-        showToast('✓ Импорт успешен', 'success');
-      }
-    } catch (err) { alert('Ошибка: ' + err.message); }
-  };
-  reader.readAsText(file);
-}
-
-setInterval(render, 5000);
+var mediaRecorder = null;
+var audioChunks = [];
+var isRecording = false;
+var socket = io();
+socket.on("connect",function(){console.log("ok")});
+socket.on("all_events",function(d){events=d;render()});
+socket.on("new_event",function(e){events.push(e);render()});
+socket.on("delete_event",function(id){events=events.filter(function(e){return e.id!==id});render()});
+function rand(a){return a[Math.floor(Math.random()*a.length)]}
+function formatDur(m){if(m<1)return"только что";if(m<60)return m+" мин";var h=Math.floor(m/60);var mn=m%60;return mn?h+"ч "+mn+"мин":h+"ч"}
+function formatTime(i){var d=new Date(i);return d.toTimeString().slice(0,5)}
+function sameDay(a,b){return a.toDateString()===b.toDateString()}
+function addEvent(t){if(t==="vitamin"){document.getElementById("vitaminModal").classList.add("show");return}var e={type:t,time:new Date().toISOString(),comment:rand(comments[t])};socket.emit("add_event",e);if(t==="poop"){showToast("ПОЗДРАВЛЯЕМ!","poop",3000);if(navigator.vibrate)navigator.vibrate([100,50,100,50,200])}else if(t==="sleep"){showToast("Заснула","success")}else if(t==="wake"){var ls=events.slice().reverse().find(function(e){return e.type==="sleep"});if(ls){var d=Math.round((Date.now()-new Date(ls.time))/60000);showToast("Спала "+formatDur(d),"success")}else{showToast("Проснулась","success")}}else{showToast(titles[t],"success")}}
+function closeModal(){document.getElementById("vitaminModal").classList.remove("show")}
+function confirmVitamin(){var v=document.getElementById("vitaminInput").value.trim()||"Витамин D";socket.emit("add_event",{type:"vitamin",time:new Date().toISOString(),comment:rand(comments.vitamin),detail:v});closeModal();showToast(v+" записано","success")}
+function deleteEvent(id){if(!confirm("Удалить?"))return;socket.emit("delete_event",id)}
+function changeDay(d){var t=new Date();t.setHours(0,0,0,0);var n=new Date(viewDate);n.setDate(n.getDate()+d);if(n>t)return;viewDate=n;render()}
+function render(){var t=new Date();t.setHours(0,0,0);var dt=document.getElementById("dayTitle");if(sameDay(viewDate,t)){dt.textContent="Сегодня "+viewDate.toLocaleDateString("ru-RU",{day:"numeric",month:"long"})}else{dt.textContent=viewDate.toLocaleDateString("ru-RU",{weekday:"short",day:"numeric",month:"long"})}document.getElementById("nextDay").disabled=sameDay(viewDate,t);var sl=events.filter(function(e){return e.type==="sleep"});var wk=events.filter(function(e){return e.type==="wake"});var se=document.getElementById("lastSleep");if(sl.length){var ls=sl[sl.length-1];var wa=wk.find(function(w){return new Date(w.time)>new Date(ls.time)});if(wa){se.textContent=formatDur(Math.round((new Date(wa.time)-new Date(ls.time))/60000))}else{var m=Math.round((Date.now()-new Date(ls.time))/60000);se.textContent="спит "+formatDur(m)}}else{se.textContent="-"}var pp=events.filter(function(e){return e.type==="poop"});var pc=document.getElementById("poopStat");var pe=document.getElementById("lastPoop");if(pp.length){var la=pp[pp.length-1];var h=(Date.now()-new Date(la.time))/3600000;pe.textContent=h<1?Math.round(h*60)+" мин назад":Math.round(h)+" ч назад";if(h>24){pc.classList.add("alert");pe.textContent=Math.round(h)+"ч!"}else{pc.classList.remove("alert")}}else{pe.textContent="никогда";pc.classList.remove("alert")}var de=events.filter(function(e){return sameDay(new Date(e.time),viewDate)}).sort(function(a,b){return new Date(b.time)-new Date(a.time)});var li=document.getElementById("eventsList");if(!de.length){li.innerHTML="<div class=empty>Пока тихо</div>";return}li.innerHTML=de.map(function(e){var em=(titles[e.type]||"?").split(" ")[0];var ti=(titles[e.type]||e.type);return "<div class=event><div class=event-emoji>"+em+"</div><div class=event-info><div class=event-title>"+ti+(e.detail?" "+e.detail:"")+'</div><div class=event-comment>'+(e.comment||"")+"</div></div><div class=event-time>"+formatTime(e.time)+'</div><button class=event-delete onclick="deleteEvent('+e.id+')">x</button></div>'}).join("")}
+function showToast(m,t,d){if(!t)t="";if(!d)d=2000;var o=document.getElementById("toast");o.textContent=m;o.className="toast "+t+" show";setTimeout(function(){o.classList.remove("show")},d)}
+async function toggleVoice(){if(!isRecording){try{var s=await navigator.mediaDevices.getUserMedia({audio:true});mediaRecorder=new MediaRecorder(s);audioChunks=[];mediaRecorder.ondataavailable=function(e){audioChunks.push(e.data)};mediaRecorder.onstop=function(){var b=new Blob(audioChunks,{type:"audio/webm"});var r=new FileReader();r.onloadend=function(){socket.emit("add_event",{type:"voice",time:new Date().toISOString(),comment:"Голосовое сообщение",audio:r.result});showToast("Сохранено","success")};r.readAsDataURL(b);s.getTracks().forEach(function(t){t.stop()})};mediaRecorder.start();isRecording=true;document.getElementById("voiceBtn").classList.add("recording");document.getElementById("voiceLabel").textContent="Остановить"}catch(e){alert("Микрофон: "+e.message)}}else{mediaRecorder.stop();isRecording=false;document.getElementById("voiceBtn").classList.remove("recording");document.getElementById("voiceLabel").textContent="Голосовая заметка"}}
+function exportData(){var d=JSON.stringify(events,null,2);var b=new Blob([d],{type:"application/json"});var u=URL.createObjectURL(b);var a=document.createElement("a");a.href=u;a.download="babylog-"+new Date().toISOString().slice(0,10)+".json";a.click();URL.revokeObjectURL(u)}
+function importData(e){var f=e.target.files[0];if(!f)return;var r=new FileReader();r.onload=function(ev){try{var d=JSON.parse(ev.target.result);if(!Array.isArray(d))throw Error("bad");if(confirm("Заменить?")){events=d;showToast("Импорт готов","success")}}catch(e){alert("Ошибка: "+e.message)}};r.readAsText(f)}
+setInterval(render,5000);
 render();
 </script>
 </body>
